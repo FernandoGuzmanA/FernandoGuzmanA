@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fer_manager,Fer Manager,model_employee,fernando_group_user,1,1,1,1
+access_leader_manager,Leader Manager,model_leader,fernando_group_user,1,1,1,1
+access_employee_leader,Employee Leader,model_employee_leader_rel,fernando_group_user,1,1,1,1

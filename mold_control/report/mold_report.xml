@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.actions.report" id="mold_control_report_action">
+        <field name="name">Reporte de Moldes</field>
+        <field name="model">mold.control</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mold_control.report_mold_control_qweb</field>
+        <field name="report_file">mold_control.report_mold_control_qweb</field>
+        <field name="binding_model_id" ref="mold_control.model_mold_control"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mold_control_qweb">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-lg-12">
+                            <h2>
+                                <span>Estado de Molde</span>
+                            </h2>
+                        </div>
+                        <div class="col-lg-12">
+                            <span>Solicitante: </span><span t-esc="o.partner_id.name"/>
+                        </div>
+                    </div>
+                    <table class="table table-sm" style="width:100%;border-collapse:collapse;text-align:center">
+                        <thead>
+                            <th>
+                                Usuario:
+                            </th>
+                            <th>
+                                Estado:
+                            </th>
+                            <th>
+                                Observación:
+                            </th>
+                            <th>
+                                Fecha:
+                            </th>
+                        </thead>
+                        <tbody>
+<!--                            <tr>-->
+<!--                                <td>-->
+<!--                                    <span t-esc="o.code"/>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                   <span t-esc="o.code"/>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                  <span t-field="o.name"/>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                     <span t-field="o.register_date"/>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <span t-field="o.base"/>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                     <span t-field="o.height"/>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <t t-set="line" t-value="1+2"/>-->
+<!--                                    <span t-esc="line"/>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+                            <tr t-foreach="o.revision_ids" t-as="line">
+                                <td style="border: 1px solid"><span t-esc="line.user_id.name"/></td>
+                                <td style="border: 1px solid"><span t-esc="line.state"/></td>
+                                <td style="border: 1px solid"><span t-esc="line.name"/></td>
+                                <td style="border: 1px solid"><span t-field="line.create_date"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </t>
+        </t>
+</template>
+
+</odoo>

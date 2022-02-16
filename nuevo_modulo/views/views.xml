@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="employee_tree_view" model="ir.ui.view" >
+        <field name="name">FernandoList</field>
+        <field name="model">employee</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="image"/>
+                <field name="name"/>
+                <field name="value"/>
+                <field name="value2"/>
+                <field name="description"/>
+<!--                <field name="leader_ids"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_form_view" model="ir.ui.view">
+        <field name="name">FernandoForm</field>
+        <field name="model">employee</field>
+        <field name="arch" type="xml">
+            <form string="FerForm">
+<!--                <header>-->
+<!--                    <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>-->
+<!--                </header>-->
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="image" widget='image' class='oe_avatar'/>
+                            <field name="name"/>
+                            <field name="value"/>
+                            <field name="value2"/>
+                            <field name="description"/>
+<!--                            <field name="leader_ids"/>-->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="employee_kanban_view" model="ir.ui.view">
+        <field name="name">EmployeeKanban</field>
+        <field name="model">employee</field>
+        <field name="arch" type="xml">
+            <kanban>
+
+            </kanban>
+        </field>
+    </record>
+
+    <record id="leader_form_view" model="ir.ui.view">
+        <field name="name">LeaderForm</field>
+        <field name="model">leader</field>
+        <field name="arch" type="xml">
+            <form string="LeaderForm">
+<!--                <header>-->
+<!--                    <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>-->
+<!--                </header>-->
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="image" widget='image' class='oe_avatar'/>
+                            <field name="name"/>
+<!--                            <field name="age"/>-->
+<!--                            <field name="employee_ids"/>-->
+                            <field name="employe_leader_ids"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ACTIONS WINDOW -->
+    <record id="employee_action" model="ir.actions.act_window">
+        <field name="name">Fernando</field>
+        <field name="res_model">employee</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <record id="leader_action" model="ir.actions.act_window">
+        <field name="name">Fernando</field>
+        <field name="res_model">leader</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- MENUS -->
+    <menuitem name="Fernando"
+              id="fernando_menu_root"/>
+
+    <menuitem name="Empleados"
+              id="employee_menu"
+              parent="fernando_menu_root"
+              action="employee_action"/>
+
+    <menuitem name="Líderes"
+              id="leaders_menu"
+              parent="fernando_menu_root"
+              action="leader_action"/>
+</odoo>
